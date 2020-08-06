@@ -28,9 +28,27 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+  var dbval;
+  var dbvallen;
 
 
-  var database = firebase.database();
+
+function postcomment(){
+
+ var commentRef = firebase.database().ref();
+ var namaval = document.getElementById("txtnama").value;
+ var commentval =  document.getElementById("txtcomment").value;
+ var idcount = document.getElementById("viewcomment").rows.length+1;
+commentRef.push ({
+      Comment: commentval,
+      Id: idcount,
+      Nama: namaval,
+});
+ document.getElementById("formcomment").reset(); 
+ refresh();
+}
+
 </script>
 
 		<!-- Wrapper -->
@@ -76,7 +94,12 @@
 								<h2 class="major">Prove Me</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 								<p>“From all the limitations and resources, use all available resources and push your imagination to its limit then you will see the results” ―Reinaldo Tandudjaja</p>
-								<p><table><tr><td><i class="icon fa-envelope"></i></td><td>reinaldotandujaya@yahoo.com</td></tr><tr><td><i class='fas fa-map-marker-alt'></i></td><td>Indonesia</td></tr></table>
+								<p>
+								<form id="formcomment" onsubmit="event.preventDefault(); postcomment();">
+								<table><tr><td  style="text-align: left; vertical-align: middle;">Name</td><td><input id="txtnama"  required="required" type="text"></input></td></tr><tr><td  style="text-align: left; vertical-align: middle;">Comment</td><td><input id="txtcomment" required="required" type="text"></input></td></tr><tr><td></td><td><input type="submit" name="POST" value="POST" style="width: 50%"></input></td></tr></table></form>
+								</p>
+
+								<p><table id="viewcomment"></table>
 								</p>
 							</article>
 
@@ -101,6 +124,39 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+<script type="text/javascript">
+	function refresh(){
+		while(document.getElementById("viewcomment").rows.length > 0) {
+		  document.getElementById("viewcomment").deleteRow(0);
+		}
 
+var query = firebase.database().ref().orderByKey();
+query.once("value")
+  .then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      // key will be "ada" the first time and "alan" the second time
+      var key = childSnapshot.key;
+      // childData will be the actual contents of the child
+      var childData = childSnapshot.val();
+      console.log(key);
+      console.log(childData.Nama);
+      console.log(childData.Comment);
+        var table = document.getElementById("viewcomment");
+  var row = table.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  cell1.innerHTML = childData.Nama;
+  cell2.innerHTML = childData.Comment;
+  });
+});
+
+
+
+
+  
+};
+
+refresh();
+</script>
 	</body>
 </html>
