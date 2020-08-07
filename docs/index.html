@@ -66,7 +66,7 @@ commentRef.push ({
 								<p>just an ordinary website designer and loves to build simple and elegant web page without worrying about unnecessary cost</p>
 								<p>why pay for something when it's free</p>
 								<p>this website cost is $0 / year</p>
-								<p>Do you think this is just a static website? this is a website with fully functioning database (ofc still $0) don't believe? try insert your comment / leave your message by clicking "prove me" button below (yeah, its just as simple as you post your picture to your insta or your product to ecommerce sites p.s but in smaller scale ofc - just for a demo purpose), we will save your message to our realtime database, and post it in this website</p>
+								<p>Do you think this is just a static website? this is a website with fully functioning database (ofc still $0) don't believe? try insert your comment / leave your message by clicking "prove me" button below (yeah, its just as simple as you post your picture to your insta or your product to ecommerce sites p.s but in smaller scale ofc - just for a demo purpose), we will save your message to our database, post it in this website, and make a separate (detail) page for your name automatically</p>
 							</div>
 						</div>
 						<nav>
@@ -99,7 +99,10 @@ commentRef.push ({
 								<table><tr><td  style="text-align: left; vertical-align: middle;">NAME</td><td><input id="txtnama"  required="required" type="text"></input></td></tr><tr><td  style="text-align: left; vertical-align: middle;">COMMENT</td><td><input id="txtcomment" required="required" type="text"></input></td></tr><tr><td></td><td><input type="submit" name="POST" value="POST" style="width: 50%"></input></td></tr></table></form>
 								</p>
 
-								<p><table style="text-transform: uppercase;" id="viewcomment"></table>
+								<p><table id="viewcomment"></table>
+								</p>
+
+								<p><span  id="viewcomment2"></span>
 								</p>
 							</article>
 
@@ -141,12 +144,8 @@ query.once("value")
       console.log(key);
       console.log(childData.Nama);
       console.log(childData.Comment);
-        var table = document.getElementById("viewcomment");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  cell1.innerHTML = childData.Nama;
-  cell2.innerHTML = childData.Comment;
+
+  document.getElementById("viewcomment2").innerHTML=document.getElementById("viewcomment2").innerHTML+"<div style='width:100%'><div style='width:25% ;    float:left;'><a href='detail.html?n="+childData.Nama+"'>"+childData.Nama+"&nbsp;&nbsp;&nbsp;<i class='fas fa-external-link-alt'></i></a></div><div style=' margin-bottom:10px;border-bottom: solid 1px #ffffff;text-transform:lowercase;width:75%;    float:left;'>"+childData.Comment+"</div></div>";
   });
 });
 
