@@ -66,7 +66,7 @@ commentRef.push ({
 								<p>just an ordinary website designer and loves to build simple and elegant web page without worrying about unnecessary cost</p>
 								<p>why pay for something when it's free</p>
 								<p>this website cost is $0 / year</p>
-								<p>Do you think this is just a static website? this is a website with fully functioning database (ofc still $0) don't believe? try insert your comment / leave your message by clicking "prove me" button below (yeah, its just as simple as you post your picture to your insta or your product to ecommerce sites p.s but in smaller scale ofc - just for a demo purpose), we will save your message to our database, post it in this website, and make a separate (detail) page for your name automatically</p>
+								<p>Do you think this is just a static website? this is a website with fully functioning database (ofc still $0) don't believe? try insert your comment / leave your message by clicking "prove me" button below (yeah, its just as simple as you post your picture to your insta or your product to ecommerce sites p.s but in smaller scale ofc - just for a demo purpose), we will save your message to our database, post it in this website, and make a detail page for your name</p>
 							</div>
 						</div>
 						<nav>
@@ -145,7 +145,7 @@ query.once("value")
       console.log(childData.Nama);
       console.log(childData.Comment);
 
-  document.getElementById("viewcomment2").innerHTML=document.getElementById("viewcomment2").innerHTML+"<div style='width:100%'><div style='width:25% ;    float:left;'><a href='detail.html?n="+childData.Nama+"'>"+childData.Nama+"&nbsp;&nbsp;&nbsp;<i class='fas fa-external-link-alt'></i></a></div><div style=' margin-bottom:10px;border-bottom: solid 1px #ffffff;text-transform:lowercase;width:75%;    float:left;'>"+childData.Comment+"</div></div>";
+  document.getElementById("viewcomment2").innerHTML=document.getElementById("viewcomment2").innerHTML+"<div style='width:100%'><div style='width:40% ;    float:left;'><a href='detail.html?n="+childData.Nama+"'>"+childData.Nama+"&nbsp;&nbsp;&nbsp;<i class='fas fa-external-link-alt'></i></a></div><div style=' margin-bottom:10px;border-bottom: solid 1px #ffffff;text-transform:lowercase;width:60%;    float:left;'>"+childData.Comment+"</div></div>";
   });
 });
 
