@@ -43,9 +43,8 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>User Detail Page,</h1>
-								<p id="myname"></p>
-								<p>My History:</p>
+							    <h1 id="myname"></h1>
+								<p>My Comment History:</p>
 								<span id="mycomment" ></span>
 							</div>
 						</div>
@@ -89,7 +88,7 @@ var url = new URL(url_string);
 var c = url.searchParams.get("n");
 console.log(c);
 
-document.getElementById("myname").innerHTML ="I'm "+c
+document.getElementById("myname").innerHTML ="Hello, I'm "+c
 
 firebase.database().ref().orderByChild('Nama').equalTo(c).on("value", function(snapshot) {
     console.log(snapshot.val());
