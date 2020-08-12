@@ -45,9 +45,8 @@
 							<div class="inner">
 								<h1>User Detail Page,</h1>
 								<p id="myname"></p>
-								<p>This is all my comment in this website:</p>
-								<span id="mycomment"></span>
-							
+								<p>My History:</p>
+								<span id="mycomment" ></span>
 							</div>
 						</div>
 						<nav>
@@ -98,7 +97,7 @@ firebase.database().ref().orderByChild('Nama').equalTo(c).on("value", function(s
         console.log(childsnapshot.key);
         childdata=childsnapshot.val();
         console.log(childdata.Comment)
-        document.getElementById("mycomment").innerHTML=document.getElementById("mycomment").innerHTML+"<p style='border-bottom: solid 1px #ffffff'>"+childdata.Comment+"</p>"
+        document.getElementById("mycomment").innerHTML=document.getElementById("mycomment").innerHTML+"<p>"+childdata.Comment+"</p>"
     });
 });
 </script>
